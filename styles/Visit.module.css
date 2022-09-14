@@ -1,0 +1,30 @@
+.vHeader{
+    display: flex;
+    justify-content: space-around;
+}
+
+.title{
+    color: #1189C8;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 20px;
+    /* margin-left: 30px; */
+    /* margin-bottom: 7px; */
+    text-align: center;
+    font-size: 25px;
+}
+.components{
+    display: inline;
+}
+.medicine{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+.tests{
+    display: flex;
+    justify-content: space-evenly;
+}
+.date{
+    color: gray;
+    font-size: 11px;
+}
