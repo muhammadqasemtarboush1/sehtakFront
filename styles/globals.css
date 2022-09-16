@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.backGroundCoverImage{
+    background-image:url('/images/login_bg.jpeg');
+    background-size:cover ;
+}
