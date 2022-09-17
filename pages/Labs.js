@@ -2,6 +2,8 @@
 import styles from '../styles/Professional.module.css'
 import Navbar from "../components/Navbar";
 import Image from 'next/image';
+import LabsTable from '../components/HealthcareCenters/LabsTable';
+
 
 export default function Labs(){
     return(
@@ -26,6 +28,9 @@ export default function Labs(){
                 <Image src='/images/location.jpg' alt='' width='50' height='50'/>
             
             </div>    
+            </div>
+            <div>
+                <LabsTable/>
             </div>
         </>
     )
