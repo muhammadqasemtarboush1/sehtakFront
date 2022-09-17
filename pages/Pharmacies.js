@@ -2,6 +2,7 @@
 import styles from '../styles/Professional.module.css'
 import Navbar from "../components/Navbar";
 import Image from 'next/image';
+import PharmaciesTable from '../components/HealthcareCenters/PharmaciesTable';
 
 export default function Pharmacies(){
     return(
@@ -26,6 +27,9 @@ export default function Pharmacies(){
                 <Image src='/images/location.jpg' alt='' width='50' height='50'/>
             
             </div>    
+            </div>
+            <div>
+                <PharmaciesTable/>
             </div>
         </>
     )
