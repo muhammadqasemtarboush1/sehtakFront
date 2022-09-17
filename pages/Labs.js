@@ -9,7 +9,7 @@ export default function Labs(){
     return(
         <>
         <Navbar/>
-        <h1 className={styles.title}>Labs</h1>
+        {/* <h1 className={styles.title}>Labs</h1>
         <hr/>
         <br/>
         <div className={styles.inputs}>
@@ -28,7 +28,7 @@ export default function Labs(){
                 <Image src='/images/location.jpg' alt='' width='50' height='50'/>
             
             </div>    
-            </div>
+            </div> */}
             <div>
                 <LabsTable/>
             </div>

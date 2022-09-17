@@ -9,8 +9,9 @@ import Image from "next/image";
 const DoctorsTable = () =>{
     const [centerData,setCenterData] = useState([]);
     const [search,setSearch] = useState("");
-    const [filteredCenterData,setFilteredCenterData] = useState([]);
+    const [searchCity, setSearchCity] = useState("")
 
+    const [filteredCenterData,setFilteredCenterData] = useState([]);
 
     const getCenterData = async () => {
         try{
@@ -34,7 +35,7 @@ const DoctorsTable = () =>{
             selector: row => row.phone
         },
         {
-            name: 'Location',
+            name: 'City',
             selector: row => row.city,
             sortable: true
         },
@@ -54,11 +55,18 @@ const DoctorsTable = () =>{
         setFilteredCenterData(result)
     },[search]);
 
+    useEffect(()=>{
+        const result = centerData.filter(center =>{
+            return center.city.toLowerCase().match(searchCity.toLowerCase());
+        });
+        setFilteredCenterData(result)
+    },[searchCity]);
+
 
     return(
         <>
         <DataTable
-            title ='Doctors Table'
+            title ='Doctors'
             columns={columns}
             data={filteredCenterData}
             subHeader
@@ -75,15 +83,13 @@ const DoctorsTable = () =>{
             <Image src='/images/search.jpg' alt='' width='45' height='45' />
             <input 
                 type='text'
-                placeholder='Search by Name'
+                placeholder='Search by City'
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                value={search}
-                onChange={(e)=> setSearch(e.target.value)}
+                value={searchCity}
+                onChange={(e)=> setSearchCity(e.target.value)}
                 />
-            <Image src='/images/search.jpg' alt='' width='45' height='45' />
-            
+            <Image src='/images/location.jpg' alt='' width='45' height='45' />
             </>
-            
         }
         />
         </>
