@@ -16,6 +16,8 @@ export default function Navbar(){
         <Image src='/images/logo.png' alt='' width='210' height='80'/>
         <div className={styles.items}>
         <Link href='/'><a className={styles.item}>Home</a></Link>
+        <Link href='/'><a className={styles.item}>Profile</a></Link>
+
         {/* <Link href='#'><a className={styles.item}>Medical Centers</a></Link> */}
         <Dropdown/>
         {
