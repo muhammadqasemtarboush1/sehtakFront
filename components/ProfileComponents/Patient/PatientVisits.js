@@ -51,15 +51,15 @@ async function getProfileInfo() {
         <div>
             profile
             {patientData?.id}
-            {patientData?.doctor.name}
-            {patientData?.lab.name}
+            {patientData?.doctor?.name}
+            {patientData?.lab?.name}
             {patientData?.medicine}
             {patientData?.patient}
-            {patientData?.pharmacist.name}
+            {patientData?.pharmacist?.name}
             {patientData?.prescription}
             {patientData?.summary}
             {patientData?.visit_status}
-            {patientData?.x_rays_lab.name}
+            {patientData?.x_rays_lab?.name}
             {patientData?.description}
             {patientData?.x_rays}
         </div>
