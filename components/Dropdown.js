@@ -20,14 +20,14 @@ export default function Dropdown() {
           {({ active }) => (
             <button
               className={`${active && 'bg-blue-100'} w-full rounded-md p-2`}>
-              <Link href='Doctors'>Doctors</Link>
+              <Link href='/Doctors/Doctors'>Doctors</Link>
             </button>
           )}
         </Menu.Item>
         <Menu.Item>
           {({ active }) => (
             <button className={`${active && 'bg-blue-100'} w-full rounded-md p-2`}>
-            <Link href='Pharmacies'>Pharmacies</Link>
+            <Link href='/Pharmacies/Pharmacies'>Pharmacies</Link>
             </button>
           )}
         </Menu.Item>
@@ -35,7 +35,7 @@ export default function Dropdown() {
           {({ active }) => (
             <button
               className={`${active && 'bg-blue-100'} w-full rounded-md p-2`}>
-            <Link href='Labs'>Labs</Link>
+            <Link href='/Labs/Labs'>Labs</Link>
             </button>
           )}
         </Menu.Item>
@@ -43,7 +43,7 @@ export default function Dropdown() {
           {({ active }) => (
             <button
               className={`${active && 'bg-blue-100'} w-full rounded-md p-2`}>
-                <Link href='Xrays'> Xray Centers</Link>
+                <Link href='/Xrays/Xrays'> Xray Centers</Link>
             </button>
           )}
         </Menu.Item>

@@ -6,7 +6,7 @@ import styles from '/styles/Professional.module.css'
 import Image from "next/image";
 
 
-const DoctorsTable = () =>{
+const LabsTable = () =>{
     const [centerData,setCenterData] = useState([]);
     const [search,setSearch] = useState("");
     const [searchCity, setSearchCity] = useState("")
@@ -15,7 +15,7 @@ const DoctorsTable = () =>{
 
     const getCenterData = async () => {
         try{
-            const response = await axios.get('https://sehtak.herokuapp.com/auth/labs/');
+            const response = await axios.get('https://sehtak.herokuapp.com/labs/');
             setCenterData(response.data);
             setFilteredCenterData(response.data);
             console.log(centerData)
@@ -26,7 +26,7 @@ const DoctorsTable = () =>{
     }
     const columns =[
         {
-            name: 'Pharmacy Name',
+            name: 'Lab Name',
             selector: row => row.name,
             sortable: true
         },
@@ -95,4 +95,4 @@ const DoctorsTable = () =>{
         </>
     )
 }
-export default DoctorsTable
+export default LabsTable
