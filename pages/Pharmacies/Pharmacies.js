@@ -1,15 +1,13 @@
 //Import Components
-import styles from '../styles/Professional.module.css'
-import Navbar from "../components/Navbar";
-import Image from 'next/image';
-import DoctorsTable from '../components/HealthcareCenters/DoctorsTable';
+import Navbar from "../../components/Navbar";
+import PharmaciesTable from '../../components/HealthcareCenters/PharmaciesTable';
 
-export default function Doctors(){
+export default function Pharmacies(){
     return(
         <>
         <Navbar/>
-        {/* <h1 className={styles.title}>Doctors</h1> */}
-        {/* <hr/>
+        {/* <h1 className={styles.title}>Pharmacies</h1>
+        <hr/>
         <br/> */}
         {/* <div className={styles.inputs}>
             <div className={styles.inputs}>
@@ -29,7 +27,7 @@ export default function Doctors(){
             </div>    
             </div> */}
             <div>
-                <DoctorsTable/>
+                <PharmaciesTable/>
             </div>
         </>
     )

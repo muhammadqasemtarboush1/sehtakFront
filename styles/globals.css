@@ -6,12 +6,16 @@
     background-image:url('/images/login_bg.jpeg');
     background-size:cover ;
 }
-.backGroundCoverImage2{
-    background-image:url('/images/mBackgroundcover.png');
+.main{
+    background-image: url('/images/bg_card1.jpg');
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    margin: 0px;
-    padding: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding-bottom: 5%;
+}
+
+#iframeId{
+    border: 1px solid rgb(106, 104, 104);
+    margin-top: 20px;
 }
