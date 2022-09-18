@@ -1,6 +1,5 @@
 // https://jasonwatmore.com/post/2021/09/03/next-js-form-validation-example-with-react-hook-form
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { useAuth } from '../../contexts/Auth';
 
 
@@ -34,13 +33,13 @@ export default function Signup() {
     const { signup } = useAuth();
     const router = useRouter();
 
-    function handleSignup(data) {
+   async function handleSignup(data) {
         let userInput = {
             email: data.email,
             password: data.password
         }
-        signup(userInput);
-        router.push('/gernerator');
+        await signup(userInput);
+        router.push('UserEditData');
     }
     return (
         <>
