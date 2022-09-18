@@ -6,3 +6,12 @@
     background-image:url('/images/login_bg.jpeg');
     background-size:cover ;
 }
+.backGroundCoverImage2{
+    background-image:url('/images/mBackgroundcover.png');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+}
