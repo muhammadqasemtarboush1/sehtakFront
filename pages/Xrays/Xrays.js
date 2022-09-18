@@ -1,8 +1,6 @@
 //Import Components
-import styles from '../styles/Professional.module.css'
-import Navbar from "../components/Navbar";
-import Image from 'next/image';
-import XraysTable from '../components/HealthcareCenters/XraysTable';
+import Navbar from "../../components/Navbar";
+import XraysTable from '../../components/HealthcareCenters/XraysTable';
 
 export default function Xrays(){
     return(

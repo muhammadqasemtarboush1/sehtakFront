@@ -15,7 +15,7 @@ const DoctorsTable = () =>{
 
     const getCenterData = async () => {
         try{
-            const response = await axios.get('https://sehtak.herokuapp.com/auth/pharmacists/');
+            const response = await axios.get('https://sehtak.herokuapp.com/pharmacists/');
             setCenterData(response.data);
             setFilteredCenterData(response.data);
             console.log(centerData)

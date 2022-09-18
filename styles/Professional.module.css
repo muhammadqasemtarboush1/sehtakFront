@@ -1,3 +1,4 @@
+
 .title{
     color: #1189C8;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -18,4 +19,9 @@
     font-size: 18px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 13px;
+}
+
+.main{
+    background-image: url('../public/images/digital-composite-doctor-with-white-graph-with-flare-against-blurry-background-with-light-blue-overlay.jpeg');
+    background-size: cover;
 }
