@@ -2,12 +2,13 @@
 import styles from '../styles/Professional.module.css'
 import Navbar from "../components/Navbar";
 import Image from 'next/image';
+import XraysTable from '../components/HealthcareCenters/XraysTable';
 
 export default function Xrays(){
     return(
         <>
         <Navbar/>
-        <h1 className={styles.title}> Xray Centers</h1>
+        {/* <h1 className={styles.title}> Xray Centers</h1>
         <hr/>
         <br/>
         <div className={styles.inputs}>
@@ -26,6 +27,9 @@ export default function Xrays(){
                 <Image src='/images/location.jpg' alt='' width='50' height='50'/>
             
             </div>    
+            </div> */}
+            <div>
+                <XraysTable/>
             </div>
         </>
     )
