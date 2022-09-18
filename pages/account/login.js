@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/Auth';
-import Layout from '../../components/Steppers/InputLayout';
 import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 
+import "nprogress/nprogress.css";
+import NProgress  from 'nprogress';
+
 export default function Login() {
+    
+    
     // form validation rules 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -24,12 +28,16 @@ export default function Login() {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
 
-    const { login,isAuth } = useAuth();
+     const { login,isAuth } = useAuth();
     const router = useRouter();
 
-    function handleLogin(data) {  
-        login(data.email, data.password);
-        router.push('gernerator');
+    const {ss} = router.query
+
+
+    async function handleLogin(data) {
+        NProgress.start()
+        await login(data.email, data.password);
+        router.push('vistisInfo');
     }
 
     
@@ -52,9 +60,6 @@ export default function Login() {
                 <div className="mb-12 xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 md:mb-0">
                     <form onSubmit={handleSubmit(handleLogin)}>
 
-
-
-                    
                     <div className="mb-6">
                         <input
                         {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}` + "block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"}
@@ -75,6 +80,11 @@ export default function Login() {
                         placeholder="Password"
                         />
                         <div className="text-red-600">{errors.password?.message}</div>
+                            
+                        <div className="text-red-600"> { ss == "failed" ?"Email Or Password is incorrect":""}</div> 
+                            
+                        
+                        
                     </div>
 
                     <div className="flex items-center justify-between mb-6">

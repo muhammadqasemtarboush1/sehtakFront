@@ -30,13 +30,12 @@ export function AuthProvider({ children }) {
 
     async function signup(userInput) {
         try {
-
             const res = await axios.post(createUserUrl, userInput);
             if (res.status === 400) {
                 console.log(`${res.status} bad request`)
             }
             if (res.status === 201 || res.status === 200) {
-                login(email, password);
+                await login(userInput.email, userInput.password);
             }
         }
         catch (error) {

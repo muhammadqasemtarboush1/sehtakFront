@@ -4,12 +4,18 @@ import styles from '../styles/Navbar.module.css'
 import Image from 'next/image'
 import Dropdown from './Dropdown'
 import { useAuth } from '../contexts/Auth';
-
+import { useRouter } from 'next/router';
 
 export default function Navbar(){
     const {isAuth,logout } = useAuth();
     const isLoggedIn = isAuth()
+    const router = useRouter();
 
+    function handleLogout(e) {  
+        e.preventDefault();
+        logout()
+        router.push('login?ss=logout');
+    }
     return(
         <>
         <div className={styles.container}>
@@ -22,7 +28,7 @@ export default function Navbar(){
         <Dropdown/>
         {
 
-    isLoggedIn ? <Link href='login'><button onClick={logout} className={styles.whiteButtons}>Logout</button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login</button></Link>
+    isLoggedIn ? <Link href='login'><button onClick={handleLogout} className={styles.whiteButtons}>Logout</button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login</button></Link>
         }
         </div>
         </div>
