@@ -2,9 +2,9 @@ import { createContext, useState, useContext } from "react";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
-const createUserUrl = "https://sehtak.herokuapp.com/auth/register/";
-const loginURL = "https://sehtak.herokuapp.com/auth/login/"
-const refreshUrl = "https://sehtak.herokuapp.com/auth/login/refresh/"
+const createUserUrl = "https://sehtak.herokuapp.com/register/";
+const loginURL = "https://sehtak.herokuapp.com/login/"
+const refreshUrl = "https://sehtak.herokuapp.com/login/refresh/"
 
 const AuthContext = createContext(undefined);
 
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
             }
         }
         catch (error) {
-            console.log(`Error Logging in: ${error}`)
+           
         }
     }
 
@@ -68,8 +68,7 @@ export function AuthProvider({ children }) {
                 access: res.data.access,
                 refresh: tokens.refresh
             }
-            console.log("refresh token res", res.data); // access
-            console.log(55555555555, newTokens);
+            
             setTokens(newTokens);
             // setUserInfo(jwt_decode(newTokens.access));
             localStorage.setItem("AuthTokens", JSON.stringify(newTokens));
@@ -80,26 +79,26 @@ export function AuthProvider({ children }) {
 
     function isAuth() {
         try {
-            console.log(4444444, tokens.access, tokens.refresh)
+            
             if (tokens.access && tokens.refresh) {
                 const access = jwt_decode(tokens?.access);
                 const refresh = jwt_decode(tokens?.refresh);
                 const now = Math.ceil(Date.now() / 1000);
-                console.log(access?.user_id);
+                
                 setUserInfo(access?.user_id);
                 if (access.exp > now) {
-                    console.log("Access token hasn't expired")
+                   
                     return true;
                 }
                 if (access?.exp < now && refresh.exp > now) {
                     refreshToken();
-                    console.log("Need to refresh token");
+                    
                     return true;
                 }
                 return false;
             }
         } catch (error) {
-            console.log(`Error in authenticating the user${error}`);
+            
             return false;
         }
     }

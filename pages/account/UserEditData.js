@@ -21,24 +21,26 @@ export default function UserData() {
   const lableStyle = "font-sans text-lg text-white"
   const inputStyle = "rounded-lg w-52"
   const router = useRouter();
+
   
-  
-  const editUserUrl ="https://sehtak.herokuapp.com/auth/profile/"
+  const editUserUrl ="https://sehtak.herokuapp.com/profile/"
   
   async function editProfileInfo(userInput) {
     NProgress.start()
     const config = {
       headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("AuthTokens")).access}` }
   };
-  console.log(JSON.parse(localStorage.getItem("AuthTokens")).access)
+     
     let accessData = null
     if (typeof window !== 'undefined') {
       accessData = JSON.parse(localStorage.getItem("AuthTokens")).access
       accessData = jwt_decode(accessData).info_id
+      
     }
-    console.log(editUserUrl + accessData)
+    let ses = editUserUrl + accessData+"/"
+
     try {
-        const res = await axios.put(editUserUrl + accessData+"/", userInput,config);
+        const res = await axios.put(ses, userInput,config);
         
         if (res.status === 400) {
             console.log(`${res.status} bad request`)
@@ -50,25 +52,26 @@ export default function UserData() {
     }
     catch (error) {
         console.log(` Error Signing in: ${error}`)
-        NProgress.done()
+        NProgress.done() 
     }
   }
 
   async function handleEditSubmit(e){
+    const my_user_id  = JSON.parse(localStorage.getItem("AuthTokens")).access.user_id
     e.preventDefault()
     let dataInfo ={
-
-      "first_name": e.target.firstName.value,
-      "last_name": e.target.lastName.value,
-      "phone": e.target.phone.value,
+      "user": my_user_id,
+      "first_name": e.target.firstName.value.length < 1  ? null: e.target.firstName.value,
+      "last_name": e.target.lastName.value.length < 1  ? null:e.target.lastName.value,
+      "phone": "+962776280034".length < 1  ? null:"+962776280034",
       "birth_date": null,
-      "gender": e.target.gender.value,
-      "height": e.target.hight.value,
-      "weight": e.target.weight.value,
-      "blood_type": e.target.blood_type.value,
-      "allergies": e.target.allergies.value
+      "gender": e.target.gender.value.length < 1  ? null:e.target.gender.value,
+      "height": e.target.hight.value.length < 1  ? null:e.target.hight.value,
+      "weight": e.target.weight.value.length < 1  ? null:e.target.weight.value,
+      "blood_type": e.target.blood_type.value.length < 1  ? null:e.target.blood_type.value,
+      "allergies": e.target.allergies.value.length < 1  ? null:e.target.allergies.value
     }
-    
+    console.log(dataInfo)
     await editProfileInfo(dataInfo)
   }
 

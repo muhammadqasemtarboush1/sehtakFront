@@ -28,7 +28,7 @@ export default function Navbar(){
         <Dropdown/>
         {
 
-    isLoggedIn ? <Link href='login'><button onClick={handleLogout} className={styles.whiteButtons}>Logout</button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login</button></Link>
+    isLoggedIn ? <Link href='account/login'><button onClick={handleLogout} className={styles.whiteButtons}>Logout</button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login</button></Link>
         }
         </div>
         </div>
