@@ -34,7 +34,7 @@ const PharmaciesTable = () =>{
 
     const columns =[
         {
-            name: 'Doctor Name',
+            name: 'Pharmacy Name',
             selector: row => row.name,
             sortable: true
         },
@@ -78,7 +78,7 @@ const PharmaciesTable = () =>{
     return(
         <>
         <DataTable
-            title ='Doctors'
+            title ='Pharmacies'
             columns={columns}
             data={filteredCenterData}
             subHeader

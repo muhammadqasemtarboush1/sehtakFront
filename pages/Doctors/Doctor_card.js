@@ -114,7 +114,7 @@ export default function Doctor_card() {
             <div className='main'>
                 <div>
                     <h1 className={styles.titleb}>Doctor Card</h1>
-                    <Image src='/images/profile_icon.png' alt='' height='230' width='230' />
+                    <Image src='/images/doc_prof.png' alt='' height='230' width='230' />
                 </div>
                 <div>
                     <p className={styles.title}> Dr. {centerCard.name}</p>

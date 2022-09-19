@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component'
 import styles from '/styles/Professional.module.css'
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 
 const LabsTable = () =>{
@@ -12,6 +13,7 @@ const LabsTable = () =>{
     const [searchCity, setSearchCity] = useState("")
 
     const [filteredCenterData,setFilteredCenterData] = useState([]);
+    const router = useRouter();
 
     const getCenterData = async () => {
         try{
@@ -24,6 +26,12 @@ const LabsTable = () =>{
             console.log(error)
         }
     }
+
+    function view_card(id){
+        console.log(id);
+        router.push(`Lab_card?id=${id}`);
+    }
+
     const columns =[
         {
             name: 'Lab Name',
@@ -40,8 +48,12 @@ const LabsTable = () =>{
             sortable: true
         },
         {
+            name: 'id',
+            selector: row => row.id,
+        },
+        {
             name: ' ',
-            selector: row => <button className={styles.visitButton} onClick={() =>{alert('After clicking on view it should redirect the user to the doctor profile page')}} >View</button>
+            selector: row => <button className={styles.visitButton} onClick={()=> {view_card(row.id)}}>View</button>
         }
     ]
     useEffect(()=>{
