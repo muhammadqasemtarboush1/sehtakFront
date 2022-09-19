@@ -49,7 +49,7 @@ export default function Doctor_card() {
     //     const lat= split_loc()[0];
     //     const lon= split_loc()[1];
     //     ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
-    // },{})
+    // },[])
     return (
         <>
             <Navbar />

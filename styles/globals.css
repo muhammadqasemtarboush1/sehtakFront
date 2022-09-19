@@ -19,3 +19,12 @@
     border: 1px solid rgb(106, 104, 104);
     margin-top: 20px;
 }
+
+.profile{
+    background-image: url('/images/bg_info.jpeg');
+    background-repeat: no-repeat;
+    background-size:cover ;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+}
