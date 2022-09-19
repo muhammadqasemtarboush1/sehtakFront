@@ -16,7 +16,7 @@ export default function VistisInfo() {
     
     useEffect(() => {
         if(!isLoggedIn){
-            router.push('login?ss=failed');
+            router.push('login?status=failed');
             return     
         }
     },[isLoggedIn])

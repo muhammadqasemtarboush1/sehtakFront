@@ -31,7 +31,7 @@ export default function Login() {
      const { login,isAuth } = useAuth();
     const router = useRouter();
 
-    const {ss} = router.query
+    const {status} = router.query
 
 
     async function handleLogin(data) {
@@ -81,7 +81,7 @@ export default function Login() {
                         />
                         <div className="text-red-600">{errors.password?.message}</div>
                             
-                        <div className="text-red-600"> { ss == "failed" ?"Email Or Password is incorrect":""}</div> 
+                        <div className="text-red-600"> { status == "failed" ?"Email Or Password is incorrect":""}</div> 
                             
                         
                         

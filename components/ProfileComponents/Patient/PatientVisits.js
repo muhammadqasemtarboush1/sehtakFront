@@ -70,9 +70,6 @@ async function getProfileInfo() {
                 Doctor Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                Specialty
-                </th>
-                <th scope="col" className="px-6 py-3">
                 Location
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -95,9 +92,6 @@ async function getProfileInfo() {
                     </th>
                     <td className="px-6 py-4">
                     {visit.doctor?.city}
-                    </td>
-                    <td className="px-6 py-4">
-                    {visit.doctor?.name}
                     </td>
                     <td className="px-6 py-4">
                     {visit.doctor?.phone}
