@@ -7,9 +7,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-
-
-
 // get our fontawesome imports
 import { faPhone, faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -76,17 +73,17 @@ export default function Doctor_card() {
             <div className='main'>
                 <div>
                     <h1 className={styles.titleb}>Pharmacy Card</h1>
-                    <Image src='/images/profile_icon.png' alt='' height='230' width='230' />
+                    <Image src='/images/ph_prof.png' alt='' height='230' width='230' />
                 </div>
                 <div>
-                    <p className={styles.title}> Pharmacy Name:  {centerCard.name}</p>
+                    <p className={styles.title}> {centerCard.name}</p>
                     <p className={styles.title}><span><FontAwesomeIcon icon={faPhone} /></span> {centerCard.phone}</p>
                     <p className={styles.title}><span><FontAwesomeIcon icon={faMapLocationDot} /> Location</span></p>
                     {/* <p>{typeof(centerCard.location)}</p> */}
                     <iframe id='iframeId' height="300px" width="140%"></iframe>
                 </div>
                 <div>
-                    <button className={styles.visitButton}> Visit</button>
+                    {/* <button className={styles.visitButton}> Visit</button> */}
                 </div>
             </div>
             <Footer />
