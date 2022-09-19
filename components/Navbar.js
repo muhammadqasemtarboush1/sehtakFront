@@ -9,6 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // React Bootstrap 
 import { Dropdown, DropdownButton } from 'react-bootstrap/';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// get our fontawesome imports
+import {  faSignIn, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 export default function Navbar() {
     const { isAuth, logout } = useAuth();
@@ -43,7 +47,7 @@ export default function Navbar() {
                     </Dropdown>
                     {
 
-                        isLoggedIn ? <Link href='account/login'><button onClick={handleLogout} className={styles.whiteButtons}>Logout</button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login</button></Link>
+                        isLoggedIn ? <Link href='account/login'><button onClick={handleLogout} className={styles.whiteButtons}>Logout <span><FontAwesomeIcon icon={faSignOutAlt} /></span></button></Link> : <Link href='account/login'><button className={styles.whiteButtons}>Login <span><FontAwesomeIcon icon={faSignInAlt} /></span></button></Link>
                     }
                 </div>
 
