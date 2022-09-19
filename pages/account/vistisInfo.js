@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useAuth } from '../../contexts/Auth';
 import { useRouter } from 'next/router';
 
+import Navbar  from '../../components/Navbar';
 import PatientInfo from '../../components/ProfileComponents/Patient/PatientInfo'
 import PatientVisits from '../../components/ProfileComponents/Patient/PatientVisits'
 
@@ -12,7 +13,6 @@ export default function VistisInfo() {
     const {isAuth } = useAuth();
     const isLoggedIn = isAuth()
     const router = useRouter();
-    
     
     useEffect(() => {
         if(!isLoggedIn){
@@ -52,12 +52,10 @@ export default function VistisInfo() {
     <>
     { isLoggedIn ?
     <div className='h-screen backGroundCoverImage2'>
-        <div className='flex h-20 py-3 pl-12 bg-gradient-to-r from-teal-100 to-teal-50'> 
-          <Image src="/images/logo.png" width={140} height={30} className='ml-3'/> 
-        </div>
+        <Navbar/>
 
         <div>
-            <div className='w-3/6 ml-12'>
+            <div className='w-4/6 ml-12'>
                 <div className="border-b border-gray-200 dark:border-gray-700">
                     <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                         <li className={"mr-2" + profile[0]}  onClick={() =>setSwitchVal("profile")}>
@@ -74,7 +72,7 @@ export default function VistisInfo() {
                     </ul>
                 </div>
 
-                Data
+                
                 { switchVal=="visit" ?  <PatientVisits/> : <PatientInfo/>}
 
             </div>
