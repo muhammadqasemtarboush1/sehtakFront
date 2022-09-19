@@ -11,9 +11,14 @@ import { useRouter } from 'next/router';
 import "nprogress/nprogress.css";
 import NProgress  from 'nprogress';
 
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+
+import styles from '../../styles/UserEditData.module.css'
+import Link from 'next/link';
+
 
 export default function UserData() {
 
@@ -34,10 +39,14 @@ export default function UserData() {
         ),
     gender: Yup.string()
         .required('Gender is required'),
-    height: Yup.required('Only Numbers')
-      .number("Only Numbers"),
-    weight: Yup.required('Only Numbers')
-          .number('Only Numbers'),
+    height: Yup.number()
+    .typeError("height be a number")
+    .positive()
+    .nullable(true),
+    weight: Yup.number()
+    .typeError("weight be a number")
+    .positive()
+    .nullable(true),
       
 });
 const formOptions = { resolver: yupResolver(validationSchema) };
@@ -105,6 +114,7 @@ const { errors } = formState;
       "weight": data.weight < 1  ? null:data.weight,
       "blood_type": data.blood_type < 1  ? null: data.blood_type,
       "allergies": data.allergies < 1  ? null:data.allergies
+
     }
     console.log(dataInfo)
     await editProfileInfo(dataInfo)
@@ -115,9 +125,9 @@ const { errors } = formState;
     <>
     
     <div className='h-screen backGroundCoverImage'>
-      <div className='flex h-20 py-3 pl-12 bg-gradient-to-r from-teal-100 to-teal-50'> 
+      {/* <div className='flex h-20 py-3 pl-12 bg-gradient-to-r from-teal-100 to-teal-50'> 
           <Image src="/images/logo.png" width={140} height={30} className='ml-3'/> 
-      </div>
+      </div> */}
       <div className='ml-5 text-4xl text-green-600'>Information Edit</div>
         <form onSubmit={handleSubmit(handleEditSubmit)}>
           <div className='flex flex-wrap justify-around max-w-3xl p-5 ml-5 bg-teal-300 rounded-md'>
@@ -160,8 +170,35 @@ const { errors } = formState;
               </div>
               
               <div>
-                <label for="countries" className="">Select an option</label>
-                <select id="countries" name='blood_type' className="">
+                <Link href='/account/vistisInfo'>
+                <input className={styles.createButton} type="submit" value='Save' />
+                </Link>
+              </div>
+
+            </div>
+
+
+            <div className=''>
+
+              <div className={divStyle}>
+                <label className={styles.labelStyle} for="lastName">Last Name</label>
+                <input className={inputStyle} name='lastName' id='lastName' />
+              </div>
+
+              <div className={divStyle}>
+                <label className={styles.labelStyle} for="datepicker">Birth Date</label>
+                <div><DatePicker className={inputStyle} id='datepicker' selected={startDate} onChange={(date) => setStartDate(date)} /></div>
+              </div>
+
+              <div className={divStyle}>
+                <label className={styles.labelStyle} for="allergies" >Allergies</label>
+                <input className={inputStyle} type="text" id='allergies' name='allergies' />
+              </div>
+
+              <div>
+              {/* <label for="countries" className={styles.labelStyle + divStyle}>Select an option</label> */}
+                <select id="countries" name='blood_type' className={styles.labelStyle}>
+
                   <option selected>Choose a Blood Type</option>
                   <option value="AB+">AB+</option>
                   <option value="AB-">AB-</option>
