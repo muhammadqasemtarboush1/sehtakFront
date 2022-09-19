@@ -14,7 +14,6 @@ export default function VistisInfo() {
     const isLoggedIn = isAuth()
     const router = useRouter();
     
-    
     useEffect(() => {
         if(!isLoggedIn){
             router.push('login?ss=failed');
@@ -53,9 +52,6 @@ export default function VistisInfo() {
     <>
     { isLoggedIn ?
     <div className='h-screen backGroundCoverImage2'>
-        {/* <div className='flex h-20 py-3 pl-12 bg-gradient-to-r from-teal-100 to-teal-50'> 
-          <Image src="/images/logo.png" width={140} height={30} className='ml-3'/> 
-        </div> */}
         <Navbar/>
 
         <div>

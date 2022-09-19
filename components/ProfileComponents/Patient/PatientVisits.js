@@ -6,6 +6,8 @@ import jwt_decode from "jwt-decode";
 import "nprogress/nprogress.css";
 import NProgress  from 'nprogress';
 
+import Link from 'next/link';
+
 export default function PatientVisits() {
     
 
@@ -15,10 +17,6 @@ export default function PatientVisits() {
     
     const [patientData , setPatientData] = useState(null);
 
-    
-
-
-   
    useEffect(() => {
 async function getProfileInfo() {
      NProgress.start()
@@ -90,7 +88,8 @@ async function getProfileInfo() {
         </thead>
         <tbody>
         {patientData?.map((visit) => (
-                    <tr className="border-b odd:bg-white even:bg-gray-200 dark:bg-gray-900 dark:border-gray-700">
+                <Link key={visit.id} href={`/Patients/Patient_visit?visitId=` + visit.id}>
+                    <tr className="border-b odd:bg-white even:bg-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:cursor-pointer">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {visit.doctor?.name}
                     </th>
@@ -108,12 +107,14 @@ async function getProfileInfo() {
                     </td>
                     <td className="px-6 py-4">
                     {
-                        visit.visit_status == true  ?  <span className='p-2 text-black bg-green-400 rounded-md' >Open</span>:<span className='p-2 text-black bg-gray-400 rounded-md' >Closed</span>
+                        visit.visit_status == true  ?  <span className='p-2 text-black bg-green-400 rounded-md' >Opened</span>:<span className='p-2 text-black bg-gray-400 rounded-md' >Closed</span>
                     }
                        
                         
                     </td>
                 </tr>
+                
+            </Link>
       ))}
 
 

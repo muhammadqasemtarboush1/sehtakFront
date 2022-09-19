@@ -14,7 +14,7 @@ export default function Navbar(){
     function handleLogout(e) {  
         e.preventDefault();
         logout()
-        router.push('login?ss=logout');
+        router.push('/account/login?ss=logout');
     }
     return(
         <>
