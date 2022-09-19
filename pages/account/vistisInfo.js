@@ -15,6 +15,9 @@ export default function VistisInfo() {
     const isLoggedIn = isAuth()
     const router = useRouter();
     
+
+
+    
     useEffect(() => {
         if(!isLoggedIn){
             router.push('login?status=failed');
@@ -79,7 +82,7 @@ export default function VistisInfo() {
             </div>
             
         </div>
-        
+
       
     </div> : ""}
     </>
