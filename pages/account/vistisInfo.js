@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 import PatientInfo from '../../components/ProfileComponents/Patient/PatientInfo'
 import PatientVisits from '../../components/ProfileComponents/Patient/PatientVisits'
+import Navbar from '../../components/Navbar';
 
 
 export default function VistisInfo() {
@@ -52,9 +53,7 @@ export default function VistisInfo() {
     <>
     { isLoggedIn ?
     <div className='h-screen backGroundCoverImage2'>
-        <div className='flex h-20 py-3 pl-12 bg-gradient-to-r from-teal-100 to-teal-50'> 
-          <Image src="/images/logo.png" width={140} height={30} className='ml-3'/> 
-        </div>
+        <Navbar/>
 
         <div>
             <div className='w-3/6 ml-12'>

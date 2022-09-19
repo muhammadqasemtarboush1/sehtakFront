@@ -1,5 +1,5 @@
 //Import Components
-import styles from '../styles/Visit.module.css'
+import styles from '../../styles/Visit.module.css'
 import Navbar from "../../components/Navbar";
 import Image from 'next/image';
 
