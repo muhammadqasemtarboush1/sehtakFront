@@ -5,8 +5,9 @@ import styles from '../../styles/Visit.module.css'
 import { Router, useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-
+import jwt_decode from "jwt-decode";
+import "nprogress/nprogress.css";
+import NProgress from 'nprogress';
 
 
 
@@ -16,7 +17,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default function Doctor_card() {
-
+    
+    const CreateVisitURL = "https://sehtak.herokuapp.com/api/v1/visits/create/"
+    
     const router = useRouter();
     const {id} = router.query
 
@@ -38,6 +41,7 @@ export default function Doctor_card() {
     }
 
 
+    
 
     const split_loc = async () =>{
         try{
@@ -60,16 +64,50 @@ export default function Doctor_card() {
         getCenterCard();
         split_loc();
     })
+    
+    async function CreateVisit(){
+        NProgress.start()
+        const config = {
+          headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("AuthTokens")).access}` }
+        };
+        let accessData = null
+        let patientID =null
+        let doctorID = null
+        
+        if (typeof window !== 'undefined') {
+        accessData = JSON.parse(localStorage.getItem("AuthTokens")).access
+        patientID = jwt_decode(accessData).info_id
+        doctorID = centerCard.id
+        }    
+        const ses = CreateVisitURL
+        const userInput ={
+            "description": "",
+            "medicine": "",
+            "medicine_status": false,
+            "test_description": "",
+            "test_attachments": "",
+            "x_rays_description": "",
+            "x_rays_attachments": "",
+            "visit_status": true,
+            "doctor": doctorID
+        }
+        try {
+          const res = await axios.post(ses, userInput, config);
+    
+          if (res.status === 400) {
+            console.log(`${res.status} bad request`)
+            NProgress.done()
+          }
+          if (res.status === 201 || res.status === 200) {
+            router.push('/account/vistisInfo?visitAdded=added');
+          }
+        }
+        catch (error) {
+          console.log(` Error Signing in: ${error}`)
+          NProgress.done()
+        }
+    } 
 
-    // useEffect(()=>{
-    //     // const ifameData = document.getElementById("iframeId")
-    //     // const lat= location_arr[0];
-    //     // const lon= location_arr[1];
-    //     // // console.log(lat,lon)
-    //     // // const lat= 30.545455;
-    //     // // const lon= 35.0000000;
-    //     // ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
-    // },{})
     return (
         <>
             <Navbar />
@@ -86,7 +124,7 @@ export default function Doctor_card() {
                     <iframe id='iframeId' height="300px" width="140%"></iframe>
                 </div>
                 <div>
-                    <button className={styles.visitButton}> Visit</button>
+                    <button onClick={CreateVisit} className={styles.visitButton}> Visit</button>
                 </div>
             </div>
             <Footer />
