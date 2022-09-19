@@ -21,7 +21,10 @@ export default function Doctor_card() {
     const {id} = router.query
 
     const [centerCard,setCenterCard] = useState({});
-    const [locLoad, isLocLoad] = useState(false)
+
+    const [lat, setLat] = useState(null)
+    const [lon, setLon] = useState(null)
+
 
     const getCenterCard = async () => {
         try{
@@ -34,22 +37,39 @@ export default function Doctor_card() {
         }
     }
 
-    useEffect(()=>{
-        getCenterCard();
-    },{})
 
 
-    function split_loc(){
-        const location_arr = centerCard.location.split(',')
-        return location_arr
+    const split_loc = async () =>{
+        try{
+        const location_arr = await centerCard.location.split(',')
+        setLat(location_arr[0])
+        setLon(location_arr[1])
+        const ifameData = document.getElementById("iframeId")
+        // const lat= location_arr[0];
+        // const lon= location_arr[1];
+        ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
+        }
+        catch(e){
+            console.log(e)
+        }
+
+        // return location_arr
     }
 
+    useEffect(()=>{
+        getCenterCard();
+        split_loc();
+    })
+
     // useEffect(()=>{
-    //     const ifameData = document.getElementById("iframeId")
-    //     const lat= split_loc()[0];
-    //     const lon= split_loc()[1];
-    //     ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
-    // },[])
+    //     // const ifameData = document.getElementById("iframeId")
+    //     // const lat= location_arr[0];
+    //     // const lon= location_arr[1];
+    //     // // console.log(lat,lon)
+    //     // // const lat= 30.545455;
+    //     // // const lon= 35.0000000;
+    //     // ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
+    // },{})
     return (
         <>
             <Navbar />
