@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import Navbar  from '../../components/Navbar';
 import PatientInfo from '../../components/ProfileComponents/Patient/PatientInfo'
 import PatientVisits from '../../components/ProfileComponents/Patient/PatientVisits'
+import Navbar from '../../components/Navbar';
 
 
 export default function VistisInfo() {
