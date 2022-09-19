@@ -24,7 +24,10 @@ export default function Doctor_card() {
     const {id} = router.query
 
     const [centerCard,setCenterCard] = useState({});
-    const [locLoad, isLocLoad] = useState(false)
+
+    const [lat, setLat] = useState(null)
+    const [lon, setLon] = useState(null)
+
 
     const getCenterCard = async () => {
         try{
@@ -37,24 +40,30 @@ export default function Doctor_card() {
         }
     }
 
-    useEffect(()=>{
-        getCenterCard();
-    },{})
 
     
 
-    function split_loc(){
-        const location_arr = centerCard.location.split(',')
-        return location_arr
+    const split_loc = async () =>{
+        try{
+        const location_arr = await centerCard.location.split(',')
+        setLat(location_arr[0])
+        setLon(location_arr[1])
+        const ifameData = document.getElementById("iframeId")
+        // const lat= location_arr[0];
+        // const lon= location_arr[1];
+        ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
+        }
+        catch(e){
+            console.log(e)
+        }
+
+        // return location_arr
     }
 
-    // useEffect(()=>{
-    //     const ifameData = document.getElementById("iframeId")
-    //     const lat= split_loc()[0];
-    //     const lon= split_loc()[1];
-    //     ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
-    // },[])
-
+    useEffect(()=>{
+        getCenterCard();
+        split_loc();
+    })
     
     async function CreateVisit(){
         NProgress.start()
@@ -99,8 +108,6 @@ export default function Doctor_card() {
         }
     } 
 
-
-    
     return (
         <>
             <Navbar />
