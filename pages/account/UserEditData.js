@@ -66,7 +66,7 @@ export default function UserData() {
       "first_name": e.target.firstName.value.length < 1 ? null : e.target.firstName.value,
       "last_name": e.target.lastName.value.length < 1 ? null : e.target.lastName.value,
       "phone": "+962776280034".length < 1 ? null : "+962776280034",
-      "birth_date": null,
+      "birth_date": "1999-09-18",
       "gender": e.target.gender.value.length < 1 ? null : e.target.gender.value,
       "height": e.target.hight.value.length < 1 ? null : e.target.hight.value,
       "weight": e.target.weight.value.length < 1 ? null : e.target.weight.value,
