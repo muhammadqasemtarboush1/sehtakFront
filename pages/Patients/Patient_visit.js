@@ -15,6 +15,7 @@ import NProgress  from 'nprogress';
 // get our fontawesome imports
 import { faPhone, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from '../../components/Footer';
 
 
 export default function Patient_visit() {
@@ -125,7 +126,12 @@ async function getProfileInfo() {
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="user_avatar">Xray Results</label>
                         <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file"/>
                     </div>
+                    <div className={styles.buttons}>
+                        <button className={styles.buttonSave}>Save</button>
+                        <button className={styles.buttonClose}>Close Visit</button>
+                    </div>
                 </div>
+                <Footer/>
             </div>
             </>
             }

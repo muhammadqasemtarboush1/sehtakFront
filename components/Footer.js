@@ -16,10 +16,7 @@ export default function Footer(){
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
-            </li>
-            <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                <a href="/Info/PrivacyPolicy" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
             </li>
             <li>
                 <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
@@ -30,7 +27,7 @@ export default function Footer(){
         </ul>
     </div>
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" class="hover:underline">Sehtak™</a>. All Rights Reserved.
+    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 Sehtak™. All Rights Reserved.
     </span>
 </footer>
         </>
