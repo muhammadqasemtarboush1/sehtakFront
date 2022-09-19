@@ -12,6 +12,7 @@ import "nprogress/nprogress.css";
 import NProgress from 'nprogress';
 
 import styles from '../../styles/UserEditData.module.css'
+import Link from 'next/link';
 
 export default function UserData() {
 
@@ -123,8 +124,9 @@ export default function UserData() {
               </div>
 
               <div>
-
-                <input className={styles.createButton} type="submit" value='Create Account' />
+                <Link href='/account/vistisInfo'>
+                <input className={styles.createButton} type="submit" value='Save' />
+                </Link>
               </div>
 
             </div>
