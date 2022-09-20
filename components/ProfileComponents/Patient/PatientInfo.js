@@ -76,7 +76,7 @@ export default function PatientInfo() {
                 </div>
 
                 <div className='mt-3 ml-5'><span className=''>Blood Type:</span> <span className='font-medium text-l text-sky-500'>{patientData?.blood_type}</span></div>
-                <div className='mt-3 ml-5'><span className=''>Birth Date:</span> <span className='font-medium text-l text-sky-500'>{patientData?.birth_date} 20/9/1999</span></div>
+                <div className='mt-3 ml-5'><span className=''>Birth Date:</span> <span className='font-medium text-l text-sky-500'>{patientData?.birth_date}</span></div>
                 <div className='mt-3 ml-5'><span className=''>Allergies:</span>  <span className='font-medium text-l text-sky-500'>{patientData?.allergies}</span></div>
 
             </div>

@@ -38,6 +38,7 @@ export default function Signup() {
             email: data.email,
             password: data.password
         }
+  
         await signup(userInput);
         router.push('UserEditData');
     }
@@ -45,7 +46,7 @@ export default function Signup() {
         <>
         <div className='backGroundCoverImage'>
             <div className='flex h-20 py-3 bg-gradient-to-r from-teal-100 to-teal-50 pl-14'> 
-                <Image src="/images/logo.png" width={140} height={30} className='ml-3'/> 
+                <Image alt='headerLogo' src="/images/logo.png" width={140} height={30} className='ml-3'/> 
             </div>
             
             <main className='pl-8'>                    
