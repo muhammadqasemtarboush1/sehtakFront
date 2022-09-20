@@ -19,6 +19,7 @@
     "@themesberg/tailwind-datepicker": "^1.1.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
+    "firebase": "^9.10.0",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.1.11",
     "headlessui": "0.0.0",
@@ -34,6 +35,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.35.0",
     "styled-components": "^5.3.5",
+    "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
