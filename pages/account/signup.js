@@ -52,9 +52,9 @@ export default function Signup() {
             <main className='pl-8'>                    
                     <div class="bg-grey-lighter min-h-screen flex flex-col">
                     <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-1">
-                        <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                        <div class="bg-white px-6 py-10 rounded shadow-md text-black w-full">
                         <form onSubmit={handleSubmit(handleSignup)}>
-                            <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                            <h1 class="mb-8 text-2xl text-center">Create a new account</h1>
                             <div className="text-red-600">{errors.email?.message}</div>
                             <input
                                 {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`+"block border border-grey-light w-full p-3 rounded mb-3"}
@@ -95,10 +95,10 @@ export default function Signup() {
                         </form>
                         </div>
                         <div class="text-grey-dark mt-6">
-                            Already have an account? 
-                            <a class="no-underline border-b border-blue text-blue" href="login">
+                            Already have an account?
+                            <a class="underline border-b border-blue text-blue" href="login">
                                 Log in
-                            </a>.
+                            </a>
                         </div>
                     </div>
                 </div>
