@@ -7,6 +7,7 @@ import "nprogress/nprogress.css";
 import NProgress from 'nprogress';
 
 import Link from 'next/link';
+import UploadFile from '../../uploadfile';
 
 export default function ProUserVisits() {
 
@@ -152,7 +153,7 @@ export default function ProUserVisits() {
                                         </Link>
                                         // ))
                                     }
-
+                                    {/* <UploadFile /> */}
 
                                 </tbody>
                             </table>
