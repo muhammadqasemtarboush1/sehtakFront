@@ -11,7 +11,7 @@ import UploadFile from '../../uploadfile';
 
 export default function ProUserVisits() {
 
-    const api = 'https://sehtak.herokuapp.com/api/v1/visits/';
+    const api = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/visits/`;
     const token = JSON.parse(localStorage.getItem("AuthTokens")).access
     // const token = JSON.parse(localStorage.getItem('AuthTokens')).access;
     const userRole = jwt_decode(token).role.toLowerCase();

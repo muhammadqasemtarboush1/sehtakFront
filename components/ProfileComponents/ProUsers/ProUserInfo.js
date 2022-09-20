@@ -14,12 +14,10 @@ export default function ProUserInfo() {
     const token = JSON.parse(localStorage.getItem('AuthTokens')).access;
     const userRole = jwt_decode(token).role.toLowerCase();
     console.log('userRole', userRole)
-    const api = `https://sehtak.herokuapp.com/${userRole}/profile/`;
+    const api = `${process.env.NEXT_PUBLIC_BACKEND_URL}${userRole}/profile/`;
     const id_pro_user = jwt_decode(token).info_id;
-    // const editUserUrl = `https://sehtak.herokuapp.com/${userRole}/profile/edit/`
+    // const editUserUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}${userRole}/profile/edit/`
 
-    // https://sehtak.herokuapp.com/doctor/profile/1/
-    // https://sehtak.herokuapp.com/doctors/profile/1
     const [proData, setProData] = useState(null);
     const [location, setLocation] = useState();
     const ifameData = document.getElementById("iframeId")

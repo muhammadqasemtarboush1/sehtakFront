@@ -15,45 +15,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Doctor_card() {
 
     const router = useRouter();
-    const {id} = router.query
+    const { id } = router.query
 
-    const [centerCard,setCenterCard] = useState({});
+    const [centerCard, setCenterCard] = useState({});
 
     const [lat, setLat] = useState(null)
     const [lon, setLon] = useState(null)
 
 
     const getCenterCard = async () => {
-        try{
-            const response = await axios.get(`https://sehtak.herokuapp.com/pharmacist/profile/${id}`);
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}pharmacist/profile/${id}`);
             setCenterCard(response.data);
             console.log(centerData)
-        } 
-        catch(error){
+        }
+        catch (error) {
             console.log(error)
         }
     }
 
 
 
-    const split_loc = async () =>{
-        try{
-        const location_arr = await centerCard.location.split(',')
-        setLat(location_arr[0])
-        setLon(location_arr[1])
-        const ifameData = document.getElementById("iframeId")
-        // const lat= location_arr[0];
-        // const lon= location_arr[1];
-        ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
+    const split_loc = async () => {
+        try {
+            const location_arr = await centerCard.location.split(',')
+            setLat(location_arr[0])
+            setLon(location_arr[1])
+            const ifameData = document.getElementById("iframeId")
+            // const lat= location_arr[0];
+            // const lon= location_arr[1];
+            ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
         }
-        catch(e){
+        catch (e) {
             console.log(e)
         }
 
         // return location_arr
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getCenterCard();
         split_loc();
     })

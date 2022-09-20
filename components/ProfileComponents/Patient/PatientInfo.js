@@ -12,9 +12,9 @@ import styles from '../../../styles/UserEditData.module.css'
 
 
 export default function PatientInfo() {
-    const editUserUrl = "https://sehtak.herokuapp.com/profile/"
+    // const editUserUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}profile/`
 
-    const api = 'https://sehtak.herokuapp.com/profile/';
+    const api = `${process.env.NEXT_PUBLIC_BACKEND_URL}profile/`;
     const token = JSON.parse(localStorage.getItem("AuthTokens")).access
     const id_patient = jwt_decode(token).info_id
 
@@ -69,10 +69,10 @@ export default function PatientInfo() {
                 <div className='flex mt-3 ml-5'> <div> <span className=''>Height: </span>
                     <span className='font-medium text-sky-600'>{patientData?.height}</span>
                 </div>
-                <div className='ml-3'>
-                    <span className=''>Weight: </span>
-                    <span className='font-medium text-sky-600'>{patientData?.weight}</span>
-                </div>
+                    <div className='ml-3'>
+                        <span className=''>Weight: </span>
+                        <span className='font-medium text-sky-600'>{patientData?.weight}</span>
+                    </div>
                 </div>
 
                 <div className='mt-3 ml-5'><span className=''>Blood Type:</span> <span className='font-medium text-l text-sky-500'>{patientData?.blood_type}</span></div>

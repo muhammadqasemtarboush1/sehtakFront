@@ -2,9 +2,9 @@ import { createContext, useState, useContext } from "react";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
-const createUserUrl = "https://sehtak.herokuapp.com/register/";
-const loginURL = "https://sehtak.herokuapp.com/login/"
-const refreshUrl = "https://sehtak.herokuapp.com/login/refresh/"
+const createUserUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}register/`;
+const loginURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}login/`
+const refreshUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}login/refresh/`
 
 const AuthContext = createContext(undefined);
 
@@ -14,7 +14,7 @@ export function useAuth() {
     return Auth;
 }
 
-export function AuthProvider({ children }) {   
+export function AuthProvider({ children }) {
 
     let lsData = null
     if (typeof window !== 'undefined') {
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
             }
         }
         catch (error) {
-           
+
         }
     }
 
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
                 access: res.data.access,
                 refresh: tokens.refresh
             }
-            
+
             setTokens(newTokens);
             // setUserInfo(jwt_decode(newTokens.access));
             localStorage.setItem("AuthTokens", JSON.stringify(newTokens));
@@ -79,26 +79,26 @@ export function AuthProvider({ children }) {
 
     function isAuth() {
         try {
-            
+
             if (tokens.access && tokens.refresh) {
                 const access = jwt_decode(tokens?.access);
                 const refresh = jwt_decode(tokens?.refresh);
                 const now = Math.ceil(Date.now() / 1000);
-                
+
                 setUserInfo(access?.user_id);
                 if (access.exp > now) {
-                   
+
                     return true;
                 }
                 if (access?.exp < now && refresh.exp > now) {
                     refreshToken();
-                    
+
                     return true;
                 }
                 return false;
             }
         } catch (error) {
-            
+
             return false;
         }
     }

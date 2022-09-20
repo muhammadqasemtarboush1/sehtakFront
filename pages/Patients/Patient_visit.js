@@ -24,7 +24,7 @@ export default function Patient_visit() {
     const { visitId } = router.query
     let token = null
 
-    const api = 'https://sehtak.herokuapp.com/api/v1/visits/' + visitId + "/";
+    const api = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/visits/` + visitId + "/";
     if (typeof window !== 'undefined') {
         token = JSON.parse(localStorage.getItem("AuthTokens")).access
     }

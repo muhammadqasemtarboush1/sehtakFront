@@ -17,70 +17,70 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default function Doctor_card() {
-    
-    const CreateVisitURL = "https://sehtak.herokuapp.com/api/v1/visits/create/"
-    
-    const router = useRouter();
-    const {id} = router.query
 
-    const [centerCard,setCenterCard] = useState({});
+    const CreateVisitURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/v1/visits/create/`
+
+    const router = useRouter();
+    const { id } = router.query
+
+    const [centerCard, setCenterCard] = useState({});
 
     const [lat, setLat] = useState(null)
     const [lon, setLon] = useState(null)
 
 
     const getCenterCard = async () => {
-        try{
-            const response = await axios.get(`https://sehtak.herokuapp.com/labs/profile/${id}`);
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}labs/profile/${id}`);
             setCenterCard(response.data);
             console.log(centerData)
-        } 
-        catch(error){
+        }
+        catch (error) {
             console.log(error)
         }
     }
 
 
-    
 
-    const split_loc = async () =>{
-        try{
-        const location_arr = await centerCard.location.split(',')
-        setLat(location_arr[0])
-        setLon(location_arr[1])
-        const ifameData = document.getElementById("iframeId")
-        // const lat= location_arr[0];
-        // const lon= location_arr[1];
-        ifameData.src=`https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
+
+    const split_loc = async () => {
+        try {
+            const location_arr = await centerCard.location.split(',')
+            setLat(location_arr[0])
+            setLon(location_arr[1])
+            const ifameData = document.getElementById("iframeId")
+            // const lat= location_arr[0];
+            // const lon= location_arr[1];
+            ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`
         }
-        catch(e){
+        catch (e) {
             console.log(e)
         }
 
         // return location_arr
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getCenterCard();
         split_loc();
     })
-    
-    async function CreateVisit(){
+
+    async function CreateVisit() {
         NProgress.start()
         const config = {
-          headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("AuthTokens")).access}` }
+            headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("AuthTokens")).access}` }
         };
         let accessData = null
-        let patientID =null
+        let patientID = null
         let doctorID = null
-        
+
         if (typeof window !== 'undefined') {
-        accessData = JSON.parse(localStorage.getItem("AuthTokens")).access
-        patientID = jwt_decode(accessData).info_id
-        doctorID = centerCard.id
-        }    
+            accessData = JSON.parse(localStorage.getItem("AuthTokens")).access
+            patientID = jwt_decode(accessData).info_id
+            doctorID = centerCard.id
+        }
         const ses = CreateVisitURL
-        const userInput ={
+        const userInput = {
             "description": "",
             "medicine": "",
             "medicine_status": false,
@@ -92,21 +92,21 @@ export default function Doctor_card() {
             "doctor": doctorID
         }
         try {
-          const res = await axios.post(ses, userInput, config);
-    
-          if (res.status === 400) {
-            console.log(`${res.status} bad request`)
-            NProgress.done()
-          }
-          if (res.status === 201 || res.status === 200) {
-            router.push('/account/vistisInfo?visitAdded=added');
-          }
+            const res = await axios.post(ses, userInput, config);
+
+            if (res.status === 400) {
+                console.log(`${res.status} bad request`)
+                NProgress.done()
+            }
+            if (res.status === 201 || res.status === 200) {
+                router.push('/account/vistisInfo?visitAdded=added');
+            }
         }
         catch (error) {
-          console.log(` Error Signing in: ${error}`)
-          NProgress.done()
+            console.log(` Error Signing in: ${error}`)
+            NProgress.done()
         }
-    } 
+    }
 
     return (
         <>
