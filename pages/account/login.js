@@ -92,7 +92,7 @@ export default function Login() {
 
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="form-group form-check">
-                                        <a href="#!" className="float-left text-gray-800">Forgot password?</a>
+                                        <Link href="#!" className="float-left text-gray-800">Forgot password?</Link>
                                     </div>
                                 </div>
 
@@ -105,7 +105,7 @@ export default function Login() {
                                     </button>
                                     <p className="pt-1 mt-2 mb-0 text-sm font-semibold">
                                         Do not have an account?
-                                        <Link href="signup"><a className="text-red-600 transition duration-200 ease-in-out hover:text-red-700 focus:text-red-700"> Register</a></Link>
+                                        <Link href="signup" className="text-red-600 transition duration-200 ease-in-out hover:text-red-700 focus:text-red-700"> Register</Link>
 
                                     </p>
                                 </div>

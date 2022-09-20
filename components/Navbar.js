@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownButton } from 'react-bootstrap/';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // get our fontawesome imports
-import {  faSignIn, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSignIn, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -32,10 +32,10 @@ export default function Navbar() {
                 </div>
                 <div className={styles.container}>
                     <div className={styles.items}>
-                        <Link href='/'><a className={styles.item}>Home</a></Link>
+                        <Link href='/' className={styles.item}>Home</Link>
                     </div>
                     <div>
-                        <Link href='/account/vistisInfo'><a className={styles.item}>Profile</a></Link>
+                        <Link href='/account/vistisInfo' className={styles.item}>Profile</Link>
                     </div>
                     <Dropdown>
                         <DropdownButton id="dropdown-basic-button" title="Medical Centers">
