@@ -12,7 +12,8 @@ import styles from '../../../styles/UserEditData.module.css';
 export default function ProUserInfo() {
 
     const token = JSON.parse(localStorage.getItem('AuthTokens')).access;
-    const userRole = jwt_decode(token).role.toLowerCase() + 's';
+    const userRole = jwt_decode(token).role.toLowerCase();
+    console.log('userRole', userRole)
     const api = `https://sehtak.herokuapp.com/${userRole}/profile/`;
     const id_pro_user = jwt_decode(token).info_id;
     // const editUserUrl = `https://sehtak.herokuapp.com/${userRole}/profile/edit/`
@@ -42,7 +43,7 @@ export default function ProUserInfo() {
                     // const lon= split_loc()[1];
 
                     ifameData.src = `https://maps.google.com/maps?q=${location[0]},${location[1]}&hl=es;&output=embed`
-                    // console.log(ifameData.src, ' ifameData.src  ifameData.src  ifameData.src');
+                    console.log(ifameData.src, ' ifameData.src  ifameData.src  ifameData.src');
                     NProgress.done();
                 })
                 .catch((error) => {
