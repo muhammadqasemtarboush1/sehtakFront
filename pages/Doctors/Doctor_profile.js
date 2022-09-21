@@ -4,7 +4,8 @@ import Navbar from '../../components/Navbar'
 export default function Doctor_Profile() {
     return (
         <>
-            <Navbar />
+            <h1>test</h1>
+            {/* <Navbar />
             <div className='main'>
                 <div class="border-b border-gray-200 dark:border-gray-700">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
@@ -20,7 +21,7 @@ export default function Doctor_Profile() {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
             {/* <Footer/> */}
         </>
     )
